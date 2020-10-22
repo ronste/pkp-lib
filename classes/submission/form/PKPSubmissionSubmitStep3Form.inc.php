@@ -115,7 +115,7 @@ class PKPSubmissionSubmitStep3Form extends SubmissionSubmitForm {
 	 * Save changes to submission.
 	 * @return int the submission ID
 	 */
-	function execute() {
+	function execute(...$functionArgs) {
 		// Execute submission metadata related operations.
 		$this->_metadataFormImplem->execute($this->submission, Application::getRequest());
 

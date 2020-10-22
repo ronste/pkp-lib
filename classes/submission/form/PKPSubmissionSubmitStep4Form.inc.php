@@ -30,9 +30,16 @@ class PKPSubmissionSubmitStep4Form extends SubmissionSubmitForm {
 	 * Save changes to submission.
 	 * @return int the submission ID
 	 */
-	function execute() {
+	function execute(...$functionArgs) {
 		$submissionDao = Application::getSubmissionDAO();
 		$request = Application::getRequest();
+		
+		//TODO RS verity nothing changed
+		if ($this->submission->getLocalizedData('accepted_submissionChecklist') == $this->context->getLocalizedData('submissionChecklist')) {
+		    error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":submissionChecklist ".print_r('submissionChecklist not changed',true));
+		} else {
+		    error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":submissionChecklist ".print_r('submissionChecklist changed',true));
+		}
 
 		// Set other submission data.
 		if ($this->submission->getSubmissionProgress() <= $this->step) {

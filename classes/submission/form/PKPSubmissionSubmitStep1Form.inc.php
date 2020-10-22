@@ -212,6 +212,10 @@ class PKPSubmissionSubmitStep1Form extends SubmissionSubmitForm {
 			$authorDao = DAORegistry::getDAO('AuthorDAO');
 			$authorDao->changeSubmissionLocale($this->submission->getId(), $oldLocale, $this->getData('locale'));
 		}
+		
+		//TODO RS store submission checkboxes and privacy statement
+		$this->submission->setData('accepted_submissionChecklist', $this->context->getLocalizedData('submissionChecklist'), $this->submission->getLocale());
+		$this->submission->setData('accepted_privacyStatement', $this->context->getLocalizedData('privacyStatement'), $this->submission->getLocale());
 	}
 
 	/**
@@ -287,7 +291,7 @@ class PKPSubmissionSubmitStep1Form extends SubmissionSubmitForm {
 	 * Save changes to submission.
 	 * @return int the submission ID
 	 */
-	function execute() {
+	function execute(...$functionArgs) {
 		$submissionDao = Application::getSubmissionDAO();
 		$request = Application::getRequest();
 		$user = $request->getUser();

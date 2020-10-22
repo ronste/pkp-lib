@@ -66,7 +66,7 @@ abstract class SubmissionDAO extends DAO implements PKPPubIdPluginDAO {
 			'discipline', 'subject',
 			'coverage',
 			'type', 'sponsor', 'source', 'rights',
-			'copyrightHolder',
+			'copyrightHolder','accepted_submissionChecklist','accepted_privacyStatement', //TODO RS define filed names
 		));
 	}
 
