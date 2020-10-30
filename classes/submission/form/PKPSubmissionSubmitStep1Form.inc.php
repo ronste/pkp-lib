@@ -216,6 +216,9 @@ class PKPSubmissionSubmitStep1Form extends SubmissionSubmitForm {
 		//TODO RS store submission checkboxes and privacy statement
 		$this->submission->setData('accepted_submissionChecklist', $this->context->getLocalizedData('submissionChecklist'), $this->submission->getLocale());
 		$this->submission->setData('accepted_privacyStatement', $this->context->getLocalizedData('privacyStatement'), $this->submission->getLocale());
+		if ($this->submission->getData('copyrightNoticeAgree', $this->submission->getLocale()) === "1") {
+		    $this->submission->setData('accepted_copyrightNotice', $this->context->getLocalizedData('copyrightNotice'), $this->submission->getLocale());
+		}
 	}
 
 	/**
