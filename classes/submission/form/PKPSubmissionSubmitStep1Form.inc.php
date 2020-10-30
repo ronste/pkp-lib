@@ -213,16 +213,10 @@ class PKPSubmissionSubmitStep1Form extends SubmissionSubmitForm {
 			$authorDao->changeSubmissionLocale($this->submission->getId(), $oldLocale, $this->getData('locale'));
 		}
 		
-		//TODO RS store submission checkboxes and privacy statement
+		//TODO RS store submission checkboxes and privacy statement in submission_settings
 		$this->submission->setData('accepted_submissionChecklist', $this->context->getLocalizedData('submissionChecklist'), $this->submission->getLocale());
 		$this->submission->setData('accepted_privacyStatement', $this->context->getLocalizedData('privacyStatement'), $this->submission->getLocale());
-		
-		error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":??? ".print_r($this->context->getAllData(),true));
-		$test = $this->context->getData('copyrightNoticeAgree');
-		error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":CTA ".print_r(get_class($test),true));
-		
 		if ($this->context->getData('copyrightNoticeAgree')) {
-		    error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":??? ".print_r("YEEEEESSSSS",true));
 		    $this->submission->setData('accepted_copyrightNotice', $this->context->getData('copyrightNotice'));
 		}
 	}
