@@ -19,7 +19,11 @@
 	<input type="hidden" name="submissionId" value="{$submissionId|escape}" />
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="submitStep4FormNotification"}
 
-	<p>{translate key="submission.confirm.message"}</p>
-
-	{fbvFormButtons id="step4Buttons" submitText="submission.submit.finishSubmission" confirmSubmit="submission.confirmSubmit"}
+	{**// TODO RS update template*}
+	{if $requirementsChanged}
+		<p>{translate key="submission.requirements.changed" termsChanged=$termsChanged}</p>
+	{else}
+		<p>{translate key="submission.confirm.message"}</p>
+		{fbvFormButtons id="step4Buttons" submitText="submission.submit.finishSubmission" confirmSubmit="submission.confirmSubmit"}
+	{/if}
 </form>

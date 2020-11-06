@@ -143,7 +143,8 @@ class SubmissionEventLogGridHandler extends GridHandler {
 				null,
 				null,
 				$cellProvider,
-				array('width' => 60)
+			    // TODO RS submission history
+			    array('width' => 60,'html' => true)
 			)
 		);
 	}

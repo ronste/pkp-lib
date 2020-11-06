@@ -16,6 +16,7 @@
 	<message key="author.submit.submissionCitations">Provide a formatted list of references for works cited in this submission. Please separate individual references with a blank line.</message>
 	<message key="author.submission.roundStatus.reviewsReady">New reviews have been submitted and are being considered by the editor.</message>
 	<message key="submission.confirm.message">Your submission has been uploaded and is ready to be sent. You may go back to review and adjust any of the information you have entered before continuing. When you are ready, click "Finish Submission".</message>
+	<message key="submission.requirements.changed">The following terms and conditions have changed since you last finished submission step 1: {$termsChanged} Please go back to step 1 to review the terms and conditions.</message>
 	<message key="submission.submit.availableUserGroups">Submit As</message>
 	<message key="submission.submit.availableUserGroupsDescription">Select the role that best describes your contribution to this submission.</message>
 	<message key="submission.submit.contactConsent">Corresponding Contact</message>
@@ -204,9 +205,9 @@
 	<message key="submission.event.confirmDeleteLogEntry">Are you sure you want to delete this event log entry?</message>
 	<message key="submission.event.deleteLogEntry">Delete Log Entry</message>
 	<message key="submission.event.submissionSubmitted">Initial submission completed.</message>
-	<message key="submission.event.submissionChecklistAccepted">The following submission requirements have been accepted: {$submissionChecklist}.</message>
-	<message key="submission.event.submissionCopyrightAccepted">The following copyright notice has been accepted: {$copyrightNotice}.</message>
-	<message key="submission.event.submissionPrivacyAccepted">The following privacy statement has been accepted: {$privacyStatement}.</message>
+	<message key="submission.event.submissionChecklistAccepted">The following submission requirements have been accepted: {$submissionChecklist}</message>
+	<message key="submission.event.submissionCopyrightAccepted">The following copyright notice has been accepted: {$copyrightNotice}</message>
+	<message key="submission.event.submissionPrivacyAccepted">The following privacy statement has been accepted: {$privacyStatement}</message>
 	<message key="submission.event.fileRevised">Revision "{$name}" (file ID {$fileId}-{$fileRevision}) was uploaded.</message>
 	<message key="submission.event.general.metadataUpdated">Submission metadata updated</message>
 	<message key="submission.event.general.suppFileUpdated">Submission file updated</message>

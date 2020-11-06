@@ -25,6 +25,34 @@ class PKPSubmissionSubmitStep4Form extends SubmissionSubmitForm {
 	function __construct($context, $submission) {
 		parent::__construct($context, $submission, 4);
 	}
+	
+	
+	/**
+	 * @copydoc SubmissionSubmitForm::fetch
+	 */
+	function fetch($request, $template = null, $display = false) {
+	    $templateMgr = TemplateManager::getManager($request);
+	    $context = $request->getContext();
+
+	    //TODO RS verify nothing changed
+	    // check if submission checkboxes, copyright notice or privacy pocliy changed since step 1 was saved, redirect to step 1
+	    $submissionChecklistChanged = $this->submission->getLocalizedData('accepted_submissionChecklist') !== $this->context->getLocalizedData('submissionChecklist');
+	    $copyrightNoticeChanged = $this->submission->getLocalizedData('accepted_copyrightNotice') !== $this->context->getLocalizedData('copyrightNotice');
+	    $privacyStatementChanged = $this->submission->getLocalizedData('accepted_privacyStatement') !== $this->context->getLocalizedData('privacyStatement');
+	    
+	    if ($submissionChecklistChanged || $copyrightNoticeChanged || $privacyStatementChanged) {
+	        $termsChanged = array_filter(array(
+	            __("submission.submit.submissionChecklist") => $submissionChecklistChanged,
+	            __("submission.submit.copyrightNoticeAgreementLabel") => $copyrightNoticeChanged,
+	            __("submission.submit.privacyStatement") => $privacyStatementChanged));
+
+	        $templateMgr->assign(array(
+     	        'requirementsChanged' => true,
+     	        'termsChanged' => '<p><ul><li>'.implode('</li><li>', array_keys($termsChanged)).'</ul></p>'
+     	    ));
+	    }
+	    return parent::fetch($request, $template, $display);
+	}
 
 	/**
 	 * Save changes to submission.
@@ -33,13 +61,6 @@ class PKPSubmissionSubmitStep4Form extends SubmissionSubmitForm {
 	function execute(...$functionArgs) {
 		$submissionDao = Application::getSubmissionDAO();
 		$request = Application::getRequest();
-		
-		//TODO RS verity nothing changed
-		if ($this->submission->getLocalizedData('accepted_submissionChecklist') == $this->context->getLocalizedData('submissionChecklist')) {
-		    error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":submissionChecklist ".print_r('submissionChecklist not changed',true));
-		} else {
-		    error_log("RS_DEBUG:".basename(__FILE__).":".__FUNCTION__.":submissionChecklist ".print_r('submissionChecklist changed',true));
-		}
 
 		// Set other submission data.
 		if ($this->submission->getSubmissionProgress() <= $this->step) {
