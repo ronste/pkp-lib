@@ -34,7 +34,6 @@ class PKPSubmissionSubmitStep4Form extends SubmissionSubmitForm {
 	    $templateMgr = TemplateManager::getManager($request);
 	    $context = $request->getContext();
 
-	    //TODO RS verify nothing changed
 	    // check if submission checkboxes, copyright notice or privacy pocliy changed since step 1 was saved, redirect to step 1
 	    $submissionChecklistChanged = $this->submission->getLocalizedData('accepted_submissionChecklist') !== $this->context->getLocalizedData('submissionChecklist');
 	    $copyrightNoticeChanged = $this->submission->getLocalizedData('accepted_copyrightNotice') !== $this->context->getLocalizedData('copyrightNotice');

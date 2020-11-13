@@ -208,6 +208,7 @@
 	<message key="submission.event.submissionChecklistAccepted">The following submission requirements have been accepted: {$submissionChecklist}</message>
 	<message key="submission.event.submissionCopyrightAccepted">The following copyright notice has been accepted: {$copyrightNotice}</message>
 	<message key="submission.event.submissionPrivacyAccepted">The following privacy statement has been accepted: {$privacyStatement}</message>
+	<message key="submission.event.submittingUserStatement">This manuscript was submitted by {$submittingUser} in the name of {$authorName}.</message>
 	<message key="submission.event.fileRevised">Revision "{$name}" (file ID {$fileId}-{$fileRevision}) was uploaded.</message>
 	<message key="submission.event.general.metadataUpdated">Submission metadata updated</message>
 	<message key="submission.event.general.suppFileUpdated">Submission file updated</message>

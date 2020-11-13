@@ -18,8 +18,6 @@
 	{csrf}
 	<input type="hidden" name="submissionId" value="{$submissionId|escape}" />
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="submitStep4FormNotification"}
-
-	{**// TODO RS update template*}
 	{if $requirementsChanged}
 		<p>{translate key="submission.requirements.changed" termsChanged=$termsChanged}</p>
 	{else}
